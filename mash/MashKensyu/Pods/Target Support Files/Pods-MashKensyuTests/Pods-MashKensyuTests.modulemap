@@ -1,0 +1,6 @@
+framework module Pods_MashKensyuTests {
+  umbrella header "Pods-MashKensyuTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

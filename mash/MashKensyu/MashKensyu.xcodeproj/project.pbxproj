@@ -6,6 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		638B124465D69F83452FD882 /* Pods_MashKensyuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A5FDBE50EF574AC45CB6C0DA /* Pods_MashKensyuTests.framework */; };
+		E0A9415C14EF1D362875FE53 /* Pods_MashKensyu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D2AC1C321463D18A2A221D6 /* Pods_MashKensyu.framework */; };
+		EF589D600E2AE4174D596E63 /* Pods_MashKensyu_MashKensyuUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10AD18A3C8BCAEE6DC6B3F67 /* Pods_MashKensyu_MashKensyuUITests.framework */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		C06D2D4A2D489263006FEB60 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -24,9 +30,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		05B3DADBD11C66C968E382F2 /* Pods-MashKensyuTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MashKensyuTests.debug.xcconfig"; path = "Target Support Files/Pods-MashKensyuTests/Pods-MashKensyuTests.debug.xcconfig"; sourceTree = "<group>"; };
+		10AD18A3C8BCAEE6DC6B3F67 /* Pods_MashKensyu_MashKensyuUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MashKensyu_MashKensyuUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1971ED4F4354D06FCF3DA18B /* Pods-MashKensyu.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MashKensyu.debug.xcconfig"; path = "Target Support Files/Pods-MashKensyu/Pods-MashKensyu.debug.xcconfig"; sourceTree = "<group>"; };
+		2D2AC1C321463D18A2A221D6 /* Pods_MashKensyu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MashKensyu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		32A9FA3E76D335CE8C91AA07 /* Pods-MashKensyu.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MashKensyu.release.xcconfig"; path = "Target Support Files/Pods-MashKensyu/Pods-MashKensyu.release.xcconfig"; sourceTree = "<group>"; };
+		9352FC3B3C9B67744EC4B7AD /* Pods-MashKensyuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MashKensyuTests.release.xcconfig"; path = "Target Support Files/Pods-MashKensyuTests/Pods-MashKensyuTests.release.xcconfig"; sourceTree = "<group>"; };
+		A5FDBE50EF574AC45CB6C0DA /* Pods_MashKensyuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MashKensyuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06D2D332D489261006FEB60 /* MashKensyu.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MashKensyu.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06D2D492D489263006FEB60 /* MashKensyuTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MashKensyuTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C06D2D532D489263006FEB60 /* MashKensyuUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MashKensyuUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3F4F3F5ACF1C455BE58653C /* Pods-MashKensyu-MashKensyuUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MashKensyu-MashKensyuUITests.debug.xcconfig"; path = "Target Support Files/Pods-MashKensyu-MashKensyuUITests/Pods-MashKensyu-MashKensyuUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		E6F8BCFF01740DC8A1BC6936 /* Pods-MashKensyu-MashKensyuUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MashKensyu-MashKensyuUITests.release.xcconfig"; path = "Target Support Files/Pods-MashKensyu-MashKensyuUITests/Pods-MashKensyu-MashKensyuUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -50,11 +65,15 @@
 		};
 		C06D2D4C2D489263006FEB60 /* MashKensyuTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = MashKensyuTests;
 			sourceTree = "<group>";
 		};
 		C06D2D562D489263006FEB60 /* MashKensyuUITests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+			);
 			path = MashKensyuUITests;
 			sourceTree = "<group>";
 		};
@@ -65,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E0A9415C14EF1D362875FE53 /* Pods_MashKensyu.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				638B124465D69F83452FD882 /* Pods_MashKensyuTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,12 +100,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EF589D600E2AE4174D596E63 /* Pods_MashKensyu_MashKensyuUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		09BB22986A5FD0E2343CA5C4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				1971ED4F4354D06FCF3DA18B /* Pods-MashKensyu.debug.xcconfig */,
+				32A9FA3E76D335CE8C91AA07 /* Pods-MashKensyu.release.xcconfig */,
+				E3F4F3F5ACF1C455BE58653C /* Pods-MashKensyu-MashKensyuUITests.debug.xcconfig */,
+				E6F8BCFF01740DC8A1BC6936 /* Pods-MashKensyu-MashKensyuUITests.release.xcconfig */,
+				05B3DADBD11C66C968E382F2 /* Pods-MashKensyuTests.debug.xcconfig */,
+				9352FC3B3C9B67744EC4B7AD /* Pods-MashKensyuTests.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		8AEA131C6D6D19F7C401BA00 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2D2AC1C321463D18A2A221D6 /* Pods_MashKensyu.framework */,
+				10AD18A3C8BCAEE6DC6B3F67 /* Pods_MashKensyu_MashKensyuUITests.framework */,
+				A5FDBE50EF574AC45CB6C0DA /* Pods_MashKensyuTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		C06D2D2A2D489261006FEB60 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +138,8 @@
 				C06D2D4C2D489263006FEB60 /* MashKensyuTests */,
 				C06D2D562D489263006FEB60 /* MashKensyuUITests */,
 				C06D2D342D489261006FEB60 /* Products */,
+				09BB22986A5FD0E2343CA5C4 /* Pods */,
+				8AEA131C6D6D19F7C401BA00 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -112,9 +160,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C06D2D5C2D489263006FEB60 /* Build configuration list for PBXNativeTarget "MashKensyu" */;
 			buildPhases = (
+				12E15F1230809D3CD9CC2715 /* [CP] Check Pods Manifest.lock */,
 				C06D2D2F2D489261006FEB60 /* Sources */,
 				C06D2D302D489261006FEB60 /* Frameworks */,
 				C06D2D312D489261006FEB60 /* Resources */,
+				FA01B1E2BE8D4B29177E9344 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -124,8 +174,6 @@
 				C06D2D352D489261006FEB60 /* MashKensyu */,
 			);
 			name = MashKensyu;
-			packageProductDependencies = (
-			);
 			productName = MashKensyu;
 			productReference = C06D2D332D489261006FEB60 /* MashKensyu.app */;
 			productType = "com.apple.product-type.application";
@@ -134,6 +182,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C06D2D612D489263006FEB60 /* Build configuration list for PBXNativeTarget "MashKensyuTests" */;
 			buildPhases = (
+				0F16E07A469425F745437E45 /* [CP] Check Pods Manifest.lock */,
 				C06D2D452D489263006FEB60 /* Sources */,
 				C06D2D462D489263006FEB60 /* Frameworks */,
 				C06D2D472D489263006FEB60 /* Resources */,
@@ -147,8 +196,6 @@
 				C06D2D4C2D489263006FEB60 /* MashKensyuTests */,
 			);
 			name = MashKensyuTests;
-			packageProductDependencies = (
-			);
 			productName = MashKensyuTests;
 			productReference = C06D2D492D489263006FEB60 /* MashKensyuTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -157,9 +204,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C06D2D642D489263006FEB60 /* Build configuration list for PBXNativeTarget "MashKensyuUITests" */;
 			buildPhases = (
+				B776FD413B5ABFCD49094628 /* [CP] Check Pods Manifest.lock */,
 				C06D2D4F2D489263006FEB60 /* Sources */,
 				C06D2D502D489263006FEB60 /* Frameworks */,
 				C06D2D512D489263006FEB60 /* Resources */,
+				CC2842ADCC1001C034B9347D /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -170,8 +219,6 @@
 				C06D2D562D489263006FEB60 /* MashKensyuUITests */,
 			);
 			name = MashKensyuUITests;
-			packageProductDependencies = (
-			);
 			productName = MashKensyuUITests;
 			productReference = C06D2D532D489263006FEB60 /* MashKensyuUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -244,6 +291,109 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F16E07A469425F745437E45 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MashKensyuTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		12E15F1230809D3CD9CC2715 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MashKensyu-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B776FD413B5ABFCD49094628 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MashKensyu-MashKensyuUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		CC2842ADCC1001C034B9347D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MashKensyu-MashKensyuUITests/Pods-MashKensyu-MashKensyuUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MashKensyu-MashKensyuUITests/Pods-MashKensyu-MashKensyuUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MashKensyu-MashKensyuUITests/Pods-MashKensyu-MashKensyuUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FA01B1E2BE8D4B29177E9344 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MashKensyu/Pods-MashKensyu-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MashKensyu/Pods-MashKensyu-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MashKensyu/Pods-MashKensyu-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		C06D2D2F2D489261006FEB60 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -284,6 +434,7 @@
 /* Begin XCBuildConfiguration section */
 		C06D2D5D2D489263006FEB60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1971ED4F4354D06FCF3DA18B /* Pods-MashKensyu.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -311,6 +462,7 @@
 		};
 		C06D2D5E2D489263006FEB60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 32A9FA3E76D335CE8C91AA07 /* Pods-MashKensyu.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -457,6 +609,7 @@
 		};
 		C06D2D622D489263006FEB60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 05B3DADBD11C66C968E382F2 /* Pods-MashKensyuTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -475,6 +628,7 @@
 		};
 		C06D2D632D489263006FEB60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9352FC3B3C9B67744EC4B7AD /* Pods-MashKensyuTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
@@ -493,6 +647,7 @@
 		};
 		C06D2D652D489263006FEB60 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3F4F3F5ACF1C455BE58653C /* Pods-MashKensyu-MashKensyuUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -509,6 +664,7 @@
 		};
 		C06D2D662D489263006FEB60 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E6F8BCFF01740DC8A1BC6936 /* Pods-MashKensyu-MashKensyuUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
