@@ -51,7 +51,7 @@ class CategoryTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
         
-        // このスタイルダサいから直さないと、、
+        // @todo: このスタイルダサいから直さないと、、
         let workoutCategory = category[indexPath.row]
         cell.textLabel?.text = workoutCategory.name
         
@@ -66,7 +66,8 @@ class CategoryTableViewController: UITableViewController {
         return cell
         
     }
-    
+
+// 　　@info: Cellを押した時にデータが伝わっているのかを確認
 //    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 //        print(category[indexPath.row])
 //    }
@@ -75,10 +76,10 @@ class CategoryTableViewController: UITableViewController {
         
         if segue.identifier == "inAddTrainingVC" {
             guard let indexPath = categoryTable.indexPathForSelectedRow else { return }
-            let destination = segue.destination as? TrainingListViewController
+            let destination = segue.destination as? WorkOutListViewController
             destination?.passedId = category[indexPath.row].id
         }
-        
+
     }
     
 } // end of class
