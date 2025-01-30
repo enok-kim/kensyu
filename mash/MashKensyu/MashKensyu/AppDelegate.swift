@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         do {
             
             let realm = try Realm()
-            let defaultCategories = ["背中()", "胸(Chest)", "肩＆腕(Sholder&Arm)", "脚(Legs)"]
+            let defaultCategories = ["背中(Back)", "胸(Chest)", "肩＆腕(Sholder&Arm)", "脚(Legs)"]
             
             for categoryName in defaultCategories {
                 let existingCategory = realm.objects(WorkoutCategory.self).filter("name = %@", categoryName).first
