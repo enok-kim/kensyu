@@ -1,21 +1,13 @@
 //
-//  WorkoutCategory.swift
+//  WorkOut.swift
 //  MashKensyu
 //
-//  Created by eversense on 2025/01/30.
+//  Created by eversense on 2025/01/31.
 //
 
 import Foundation
 import RealmSwift
 
-// トレニングカテゴリー
-class WorkoutCategory: Object {
-    
-    @Persisted(primaryKey: true) var id: ObjectId
-    @Persisted var name: String? = nil
-    @Persisted(originProperty: "categoryId") var workouts: LinkingObjects<Workout>
-    
-}
 
 // 運動リスト
 class Workout: Object {
