@@ -1,32 +1,17 @@
-//
-//  AddTrainingViewController.swift
-//  MashKensyu
-//
-//  Created by eversense on 2025/01/30.
-//
-
 import UIKit
-import RealmSwift
 
 class WorkOutListViewController: UIViewController {
     
-    var passedId: ObjectId?
-    var trainingList: Results<Workout>!
+    var passedId: String?
+    private var workOutList: [Workout] = []
     
-    // 画面のLife Cycleーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    private let workOutListRepository = WorkOutRepository()
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
-        // 画面のタイトル設定
-        if let id = passedId {
-            let realm = try! Realm()
-            if let category = realm.object(ofType: WorkoutCategory.self, forPrimaryKey: id) {
-                self.title = category.name
-            } else {
-                print("⚠️　カテゴリーがありません: \(id)")
-            }
+
+        if let categoryId = passedId {
+            self.title = workOutListRepository.workOutListTitle(categoryid: categoryId) ?? "タイトルはnilです"
         }
     }
     
@@ -34,19 +19,17 @@ class WorkOutListViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        do {
-            let realm = try Realm()
-            
-            guard let validId = passedId else {
-                print("passedIdはnilです。")
-                return
-            }
-            trainingList = realm.objects(Workout.self).filter("categoryId.id == %@", validId)
-        } catch {
-            print("Realm　エラー: \(error.localizedDescription)")
+        if let workouts = workOutListRepository.fetchWorkouts(categoryId: passedId) {
+            workOutList = workouts
+            print("Fetched \(workOutList.count) workouts")
+        } else {
+            print("Workouts could not be fetched.")
         }
     }
     
-    // Table関連関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-
-}// end of class
+    @IBAction func addWork(_ sender: UIBarButtonItem) {
+        let storyboard = UIStoryboard(name: "AddWork", bundle: nil)
+        let addWorkVC = storyboard.instantiateViewController(withIdentifier: "AddWorkVC") as! AddWorkViewController
+        self.navigationController?.pushViewController(addWorkVC, animated: true)
+    }
+}

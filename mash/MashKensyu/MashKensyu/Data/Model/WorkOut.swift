@@ -12,11 +12,11 @@ import RealmSwift
 // 運動リスト
 class Workout: Object {
     
-    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted(primaryKey: true) var id: String?
     @Persisted var name: String
-    @Persisted var reps: Int
-    @Persisted var sets: Int
-    // 所属しているカテゴリー
+    @Persisted var difficulty: Int
+    @Persisted var descriptionText: String = ""
+    // 所属しているカテゴリー!
     @Persisted var categoryId: WorkoutCategory?
-    
+
 }
