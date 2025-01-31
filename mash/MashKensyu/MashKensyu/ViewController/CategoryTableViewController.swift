@@ -36,7 +36,7 @@ class CategoryTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
         
-     // TODO: このスタイルダサいから直さないと、、
+     // TODO: このスタイルダサいから直さないと
         let workoutCategory = workoutCategories[indexPath.row]
         cell.textLabel?.text = workoutCategory.name
         

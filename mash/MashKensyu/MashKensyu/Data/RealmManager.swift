@@ -27,7 +27,7 @@ class RealmManager {
             fatalError("Error initializing Realm: \(error.localizedDescription)")
         }
         
-        // objectId -> String
+        // objectId -> String　タイプ変更
         func migrateObjectIdToString(migration: Migration, ofType type: String) {
               migration.enumerateObjects(ofType: type) { oldObject, newObject in
                   if let oldId = oldObject?["id"] as? ObjectId {
@@ -52,4 +52,4 @@ class RealmManager {
         }
     }
     
-}// end of class
+}

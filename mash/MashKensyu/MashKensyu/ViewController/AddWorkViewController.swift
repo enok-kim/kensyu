@@ -11,6 +11,7 @@ class AddWorkViewController: UIViewController {
     
     var passedId: String?
     
+    // MARK: OutLet
     @IBOutlet weak var workNameTF: UITextField!
     @IBOutlet weak var workDescTF: UITextField!
     @IBOutlet weak var workLevelTF: UITextField!
