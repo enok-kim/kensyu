@@ -21,7 +21,7 @@ class WorkOutRepository {
     }
     
     
-    // MARK: データロジック
+    // MARK: データロジック!
     func fechCategories() -> [WorkoutCategory] {
         return Array(realm.objects(WorkoutCategory.self))
     }

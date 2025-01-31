@@ -8,7 +8,7 @@
 import Foundation
 import RealmSwift
 
-// トレニングカテゴリー
+// トレニングカテゴリー!
 class WorkoutCategory: Object {
     
     @Persisted(primaryKey: true) var id: String? = nil

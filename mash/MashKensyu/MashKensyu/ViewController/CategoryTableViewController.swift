@@ -26,7 +26,7 @@ class CategoryTableViewController: UITableViewController {
         categoryTable.reloadData()
     }
     
-    // MARK: Table Function
+    // MARK: Table Function!
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workoutCategories.count

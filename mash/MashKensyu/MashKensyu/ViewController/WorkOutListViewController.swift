@@ -27,7 +27,6 @@ class WorkOutListViewController: UIViewController {
         }
     }
     
-
     @IBAction func addWork(_ sender: UIBarButtonItem) {
         let storyboard = UIStoryboard(name: "AddWork", bundle: nil)
         let addWorkVC = storyboard.instantiateViewController(withIdentifier: "AddWorkVC") as! AddWorkViewController
