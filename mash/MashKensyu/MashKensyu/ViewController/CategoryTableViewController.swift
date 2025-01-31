@@ -36,7 +36,7 @@ class CategoryTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
         
-        // @todo: このスタイルダサいから直さないと、、
+     // TODO: このスタイルダサいから直さないと、、
         let workoutCategory = workoutCategories[indexPath.row]
         cell.textLabel?.text = workoutCategory.name
         
@@ -53,10 +53,13 @@ class CategoryTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newVC = storyboard?.instantiateViewController(identifier: "WorkOutListViewController") as! WorkOutListViewController
-        newVC.passedId = workoutCategories[indexPath.row].id
-        navigationController?.pushViewController(newVC, animated: true)
+        
+        let storyboard = UIStoryboard(name: "WorkOutList", bundle: nil)
+        let listVC = storyboard.instantiateViewController(identifier: "WorkOutListVC") as! WorkOutListViewController
+        listVC.passedId = workoutCategories[indexPath.row].id
+        navigationController?.pushViewController(listVC, animated: true)
         print(workoutCategories[indexPath.row])
+        
     }
     
 } // end of class
