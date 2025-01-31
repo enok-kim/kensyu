@@ -6,45 +6,30 @@
 //
 
 import UIKit
-import RealmSwift
 
 class CategoryTableViewController: UITableViewController {
     
-    var category: Results<WorkoutCategory>!
+    private var workoutCategories: [WorkoutCategory] = []
+    private let workoutRepository = WorkOutRepository()
     
-    // Outlet
     @IBOutlet var categoryTable: UITableView!
     
-    // 画面のLife Cycleーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    // MARK: Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
-        
-        do {
-            let realm = try Realm()
-            category = realm.objects(WorkoutCategory.self)
-            self.categoryTable.reloadData()
-        } catch {
-            print("Realm initialization error: \(error.localizedDescription)")
-        }
-        
+        workoutCategories = workoutRepository.fechCategories()
+        categoryTable.reloadData()
     }
     
-    // Table関連関数ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+    // MARK: Table Function
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        if let category = category {
-            return category.count
-        } else {
-            // categoryがnilの場合、0を返す
-            return 0
-        }
+        return workoutCategories.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -52,7 +37,7 @@ class CategoryTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
         
         // @todo: このスタイルダサいから直さないと、、
-        let workoutCategory = category[indexPath.row]
+        let workoutCategory = workoutCategories[indexPath.row]
         cell.textLabel?.text = workoutCategory.name
         
         cell.layer.cornerRadius = 12
@@ -67,19 +52,11 @@ class CategoryTableViewController: UITableViewController {
         
     }
 
-// 　　@info: Cellを押した時にデータが伝わっているのかを確認
-//    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        print(category[indexPath.row])
-//    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "inAddTrainingVC" {
-            guard let indexPath = categoryTable.indexPathForSelectedRow else { return }
-            let destination = segue.destination as? WorkOutListViewController
-            destination?.passedId = category[indexPath.row].id
-        }
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let newVC = storyboard?.instantiateViewController(identifier: "WorkOutListViewController") as! WorkOutListViewController
+        newVC.passedId = workoutCategories[indexPath.row].id
+        navigationController?.pushViewController(newVC, animated: true)
+        print(workoutCategories[indexPath.row])
     }
     
 } // end of class
