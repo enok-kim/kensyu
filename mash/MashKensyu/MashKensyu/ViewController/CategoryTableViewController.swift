@@ -54,7 +54,7 @@ class CategoryTableViewController: UITableViewController {
     // MARK: 画面遷移メソッド
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let listVC = WorkOutListViewController.instantiate(passedId: workoutCategories[indexPath.row].id!)
+        let listVC = WorkOutListViewController.instantiate(categoryId: workoutCategories[indexPath.row].id!)
         navigationController?.pushViewController(listVC, animated: true)
         print(workoutCategories[indexPath.row])
         

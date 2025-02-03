@@ -9,7 +9,7 @@ import UIKit
 
 class AddWorkViewController: UIViewController {
     
-    var passedId: String?
+    var categoryId: String?
     
     // MARK: OutLet!
     @IBOutlet weak var workoutName: UITextField!

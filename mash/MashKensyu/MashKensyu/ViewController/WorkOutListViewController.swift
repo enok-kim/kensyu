@@ -2,7 +2,7 @@ import UIKit
 
 class WorkOutListViewController: UIViewController {
     
-    var passedCategoryId: String?
+    var categoryId: String?
     private var workOutList: [Workout] = []
     
     private let workOutListRepository = WorkOutRepository()
@@ -10,8 +10,8 @@ class WorkOutListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let passedCategoryId {
-            self.title = workOutListRepository.workOutListTitle(categoryid: passedCategoryId) ?? "タイトルはnilです"
+        if let categoryId {
+            self.title = workOutListRepository.workOutListTitle(categoryid: categoryId) ?? "タイトルはnilです"
         }
     }
     
@@ -19,7 +19,7 @@ class WorkOutListViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        if let workouts = workOutListRepository.fetchWorkouts(categoryId: passedCategoryId) {
+        if let workouts = workOutListRepository.fetchWorkouts(categoryId: categoryId) {
             workOutList = workouts
             print("Fetched \(workOutList.count) workouts")
         } else {
@@ -28,10 +28,10 @@ class WorkOutListViewController: UIViewController {
     }
     
     // MARK: 画面遷移メソッド
-    static func instantiate(passedId: String) -> WorkOutListViewController {
+    static func instantiate(categoryId: String) -> WorkOutListViewController {
         let storyboard = UIStoryboard(name: "WorkOutList", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "WorkOutListVC") as! WorkOutListViewController
-        vc.passedCategoryId = passedId
+        vc.categoryId = categoryId
         return vc
     }
     
