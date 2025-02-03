@@ -2,7 +2,7 @@ import UIKit
 
 class WorkOutListViewController: UIViewController {
     
-    var passedId: String?
+    var passedCategoryId: String?
     private var workOutList: [Workout] = []
     
     private let workOutListRepository = WorkOutRepository()
@@ -10,8 +10,8 @@ class WorkOutListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let categoryId = passedId {
-            self.title = workOutListRepository.workOutListTitle(categoryid: categoryId) ?? "タイトルはnilです"
+        if let passedCategoryId {
+            self.title = workOutListRepository.workOutListTitle(categoryid: passedCategoryId) ?? "タイトルはnilです"
         }
     }
     
@@ -19,7 +19,7 @@ class WorkOutListViewController: UIViewController {
         
         super.viewWillAppear(animated)
         
-        if let workouts = workOutListRepository.fetchWorkouts(categoryId: passedId) {
+        if let workouts = workOutListRepository.fetchWorkouts(categoryId: passedCategoryId) {
             workOutList = workouts
             print("Fetched \(workOutList.count) workouts")
         } else {
@@ -31,7 +31,7 @@ class WorkOutListViewController: UIViewController {
     static func instantiate(passedId: String) -> WorkOutListViewController {
         let storyboard = UIStoryboard(name: "WorkOutList", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "WorkOutListVC") as! WorkOutListViewController
-        vc.passedId = passedId
+        vc.passedCategoryId = passedId
         return vc
     }
     
