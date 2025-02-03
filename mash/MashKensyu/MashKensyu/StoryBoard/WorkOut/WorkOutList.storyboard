@@ -11,7 +11,7 @@
         <!--運動種目-->
         <scene sceneID="IZx-uX-RP2">
             <objects>
-                <viewController storyboardIdentifier="WorkOutListViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h2w-dQ-Sl3" customClass="WorkOutListViewController" customModule="MashKensyu" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WorkOutListVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h2w-dQ-Sl3" customClass="WorkOutListViewController" customModule="MashKensyu" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="gph-gX-ciC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -36,7 +36,11 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="運動種目" id="1aZ-Io-M5d">
-                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Qjo-4I-AR3"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" systemItem="add" id="Qjo-4I-AR3">
+                            <connections>
+                                <action selector="addWork:" destination="h2w-dQ-Sl3" id="tbg-Ue-qNO"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oFI-ho-4LX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

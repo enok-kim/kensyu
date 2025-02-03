@@ -15,7 +15,7 @@ class Workout: Object {
     @Persisted(primaryKey: true) var id: String?
     @Persisted var name: String
     @Persisted var difficulty: Int
-    @Persisted var descriptionText: String = ""
+    @Persisted var workoutDescription: String = ""
     // 所属しているカテゴリー!
     @Persisted var categoryId: WorkoutCategory?
 

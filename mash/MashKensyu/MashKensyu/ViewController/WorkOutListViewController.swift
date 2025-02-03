@@ -27,9 +27,18 @@ class WorkOutListViewController: UIViewController {
         }
     }
     
-    @IBAction func addWork(_ sender: UIBarButtonItem) {
-        let storyboard = UIStoryboard(name: "AddWork", bundle: nil)
-        let addWorkVC = storyboard.instantiateViewController(withIdentifier: "AddWorkVC") as! AddWorkViewController
-        self.navigationController?.pushViewController(addWorkVC, animated: true)
+    // MARK: 画面遷移メソッド
+    static func instantiate(passedId: String) -> WorkOutListViewController {
+        let storyboard = UIStoryboard(name: "WorkOutList", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "WorkOutListVC") as! WorkOutListViewController
+        vc.passedId = passedId
+        return vc
     }
+    
+    @IBAction func addWork(_ sender: UIBarButtonItem) {
+        let addWorkVC = AddWorkViewController.instantiate()
+        self.navigationController?.pushViewController(addWorkVC, animated: true)
+        
+    }
+    
 }
