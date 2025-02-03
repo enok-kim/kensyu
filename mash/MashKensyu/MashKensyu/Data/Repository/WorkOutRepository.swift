@@ -15,21 +15,19 @@ class WorkOutRepository {
     init() {
         do {
             self.realm = try Realm()
-        }catch {
-            fatalError("Realm初期化失敗:\(error.localizedDescription)")
+        } catch {
+            fatalError("Realm初期化失敗: \(error.localizedDescription)")
         }
     }
     
-    
-    // MARK: データロジック!
-    func fechCategories() -> [WorkoutCategory] {
+    // MARK: データロジック
+    func fetchCategories() -> [WorkoutCategory] {
         return Array(realm.objects(WorkoutCategory.self))
     }
     
-    func workOutListTitle(categoryid: String?) -> String? {
-        
-        guard let id = categoryid else {
-            print("⚠️ categoryid is nil")
+    func workOutListTitle(categoryId: String?) -> String? {
+        guard let id = categoryId else {
+            print("⚠️ categoryId is nil")
             return nil
         }
         
@@ -49,6 +47,25 @@ class WorkOutRepository {
         
         let result = realm.objects(Workout.self).filter("categoryId.id == %@", categoryId)
         return Array(result)
+    }
+    
+    func addWorkout(categoryId: String, workout: Workout) {
+        
+        guard let category = realm.object(ofType: WorkoutCategory.self, forPrimaryKey: categoryId) else {
+            print("Error: Category not found for ID \(categoryId)")
+            return
+        }
+        
+        workout.categoryId = category
+
+        do {
+            try realm.write {
+                realm.add(workout)
+            }
+        } catch {
+            print("Error saving workout: \(error)")
+            
+        }
         
     }
     
