@@ -1,0 +1,52 @@
+//
+//  WorkoutDetailViewController.swift
+//  MashKensyu
+//
+//  Created by eversense on 2025/02/03.
+//
+
+import UIKit
+
+class WorkoutDetailViewController: UIViewController {
+    
+    var categoryId: String!
+    var workoutId: String!
+    var workout: Workout?
+    let repository = WorkOutRepository()
+    
+    @IBOutlet weak var workoutName: UILabel!
+    @IBOutlet weak var workoutDescription: UILabel!
+    @IBOutlet weak var workoutLevel: UILabel!
+    
+    // MARK: Life Cycle
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        fetchWorkoutDetails()
+    }
+    
+    private func fetchWorkoutDetails() {
+        workout = repository.fetchWorkoutDetails(categoryId: categoryId, workoutId: workoutId)
+        
+        if let workout = workout {
+            updateUI(with: workout)
+        } else {
+            print("⚠️ 詳細情報が見つかりません。")
+        }
+    }
+    
+    private func updateUI(with workout: Workout) {
+        self.title = workout.name
+        workoutName.text = workout.name
+        workoutDescription.text = workout.workoutDescription
+        workoutLevel.text = workout.level
+    }
+
+    // MARK: 画面遷移関連メソッド
+    static func instantiate(categoryId: String, workoutId: String) -> WorkoutDetailViewController {
+        let storyboard = UIStoryboard(name: "WorkoutDetail", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "WorkoutDetailVC") as! WorkoutDetailViewController
+        vc.categoryId = categoryId
+        vc.workoutId = workoutId
+        return vc
+    }
+}

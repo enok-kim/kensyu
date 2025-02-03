@@ -69,4 +69,15 @@ class WorkOutRepository {
         
     }
     
+    func fetchWorkoutDetails(categoryId: String?, workoutId: String?) -> Workout? {
+        guard let categoryId = categoryId, let workoutId = workoutId else {
+            print("⚠️ categoryId  workoutId가 nil입니다.")
+            return nil
+        }
+        
+        let result = realm.objects(Workout.self)
+            .filter("categoryId.id == %@ AND id == %@", categoryId, workoutId)
+        
+        return result.first
+    }
 }// end of class
