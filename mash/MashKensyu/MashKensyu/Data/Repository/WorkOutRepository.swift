@@ -16,7 +16,7 @@ class WorkOutRepository {
         do {
             self.realm = try Realm()
         } catch {
-            fatalError("Realm 초기화 실패: \(error.localizedDescription)")
+            fatalError("Realm初期化失敗: \(error.localizedDescription)")
         }
     }
     
