@@ -12,9 +12,9 @@ class AddWorkViewController: UIViewController {
     var passedId: String?
     
     // MARK: OutLet!
-    @IBOutlet weak var workName: UITextField!
-    @IBOutlet weak var workDescrioption: UITextField!
-    @IBOutlet weak var workLevel: UITextField!
+    @IBOutlet weak var workoutName: UITextField!
+    @IBOutlet weak var workoutDescrioption: UITextField!
+    @IBOutlet weak var workoutLevel: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
