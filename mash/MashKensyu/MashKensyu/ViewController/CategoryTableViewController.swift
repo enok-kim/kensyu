@@ -26,7 +26,7 @@ class CategoryTableViewController: UITableViewController {
         categoryTable.reloadData()
     }
     
-    // MARK: Table Function
+    // MARK: Table Function!
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workoutCategories.count
@@ -36,7 +36,7 @@ class CategoryTableViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "ListCell", for: indexPath)
         
-        // @todo: このスタイルダサいから直さないと、、
+     // TODO: このスタイルダサいから直さないと
         let workoutCategory = workoutCategories[indexPath.row]
         cell.textLabel?.text = workoutCategory.name
         
@@ -51,12 +51,13 @@ class CategoryTableViewController: UITableViewController {
         return cell
         
     }
-
+    // MARK: 画面遷移メソッド
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let newVC = storyboard?.instantiateViewController(identifier: "WorkOutListViewController") as! WorkOutListViewController
-        newVC.passedId = workoutCategories[indexPath.row].id
-        navigationController?.pushViewController(newVC, animated: true)
+        
+        let listVC = WorkOutListViewController.instantiate(categoryId: workoutCategories[indexPath.row].id!)
+        navigationController?.pushViewController(listVC, animated: true)
         print(workoutCategories[indexPath.row])
+        
     }
     
 } // end of class

@@ -8,10 +8,10 @@
 import Foundation
 import RealmSwift
 
-// トレニングカテゴリー
+// トレニングカテゴリー!
 class WorkoutCategory: Object {
     
-    @Persisted(primaryKey: true) var id: ObjectId
+    @Persisted(primaryKey: true) var id: String? = nil
     @Persisted var name: String? = nil
     @Persisted(originProperty: "categoryId") var workouts: LinkingObjects<Workout>
     
