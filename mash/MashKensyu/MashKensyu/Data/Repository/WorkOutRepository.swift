@@ -20,7 +20,7 @@ class WorkOutRepository {
         }
     }
     
-    // MARK: - 데이터 로직
+    // MARK: データロジック
     func fetchCategories() -> [WorkoutCategory] {
         return Array(realm.objects(WorkoutCategory.self))
     }
@@ -34,27 +34,25 @@ class WorkOutRepository {
         if let category = realm.object(ofType: WorkoutCategory.self, forPrimaryKey: id) {
             return category.name
         } else {
-            print("⚠️ 카테고리가 없습니다: \(id)")
+            print("⚠️ カテゴリーがありません: \(id)")
             return nil
         }
     }
     
     func fetchWorkouts(categoryId: String?) -> [Workout]? {
         guard let categoryId = categoryId else {
-            print("⚠️ categoryId는 nil입니다.")
+            print("⚠️ categoryIdはnilです。")
             return nil
         }
         
-        // categoryId에 해당하는 Workout 객체를 필터링
         let result = realm.objects(Workout.self).filter("categoryId.id == %@", categoryId)
         return Array(result)
     }
     
     func addWorkout(categoryId: String, workout: Workout) {
         do {
-            // categoryId에 해당하는 WorkoutCategory 객체를 가져옴
             if let category = realm.object(ofType: WorkoutCategory.self, forPrimaryKey: categoryId) {
-                workout.categoryId = category  // categoryId와 연결
+                workout.categoryId = category
             } else {
                 print("Error: Category not found for ID \(categoryId)")
                 return
