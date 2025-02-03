@@ -1,33 +1,60 @@
 import UIKit
 
-class WorkOutListViewController: UIViewController {
+class WorkOutListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var categoryId: String?
     private var workOutList: [Workout] = []
     
     private let workOutListRepository = WorkOutRepository()
     
+    @IBOutlet weak var workoutListTable: UITableView!
+    
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let categoryId {
-            self.title = workOutListRepository.workOutListTitle(categoryid: categoryId) ?? "タイトルはnilです"
+        if let categoryId = categoryId {
+            self.title = workOutListRepository.workOutListTitle(categoryId: categoryId) ?? "タイトルはnilです"
         }
+        
+        workoutListTable.dataSource = self
+        workoutListTable.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        
         super.viewWillAppear(animated)
+        
+        guard let categoryId = categoryId else {
+            print("categoryId is nil")
+            return
+        }
         
         if let workouts = workOutListRepository.fetchWorkouts(categoryId: categoryId) {
             workOutList = workouts
             print("Fetched \(workOutList.count) workouts")
+            workoutListTable.reloadData()
         } else {
             print("Workouts could not be fetched.")
         }
     }
     
-    // MARK: 画面遷移メソッド
+    // MARK: - TableView Methods
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return workOutList.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutListCell", for: indexPath)
+        let workout = workOutList[indexPath.row]
+        cell.textLabel?.text = workout.name
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(workOutList[indexPath.row])
+    }
+    
+    // MARK: - Screen Transition Method
     static func instantiate(categoryId: String) -> WorkOutListViewController {
         let storyboard = UIStoryboard(name: "WorkOutList", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "WorkOutListVC") as! WorkOutListViewController
@@ -36,9 +63,12 @@ class WorkOutListViewController: UIViewController {
     }
     
     @IBAction func addWork(_ sender: UIBarButtonItem) {
-        let addWorkVC = AddWorkViewController.instantiate()
-        self.navigationController?.pushViewController(addWorkVC, animated: true)
+        guard let categoryId = categoryId else {
+            print("Category ID is nil")
+            return
+        }
         
+        let addWorkVC = AddWorkViewController.instantiate(categoryId: categoryId)
+        self.navigationController?.pushViewController(addWorkVC, animated: true)
     }
-    
 }

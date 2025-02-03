@@ -22,7 +22,7 @@ class CategoryTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        workoutCategories = workoutRepository.fechCategories()
+        workoutCategories = workoutRepository.fetchCategories()
         categoryTable.reloadData()
     }
     
