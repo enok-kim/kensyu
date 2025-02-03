@@ -33,7 +33,7 @@ class AddWorkViewController: UIViewController {
         newWorkout.workoutDescription = description
         newWorkout.difficulty = level
         
-        if let categoryId = categoryId {
+        if let categoryId {
             workoutRepository.addWorkout(categoryId: categoryId, workout: newWorkout)
             self.navigationController?.popViewController(animated: true)
         } else {
