@@ -2,7 +2,7 @@ import UIKit
 
 class WorkOutListViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    var categoryId: String?
+    var categoryId: String!
     private var workOutList: [Workout] = []
     
     private let workOutListRepository = WorkOutRepository()
@@ -63,11 +63,6 @@ class WorkOutListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     @IBAction func addWork(_ sender: UIBarButtonItem) {
-        guard let categoryId = categoryId else {
-            print("Category ID is nil")
-            return
-        }
-        
         let addWorkVC = AddWorkViewController.instantiate(categoryId: categoryId)
         self.navigationController?.pushViewController(addWorkVC, animated: true)
     }

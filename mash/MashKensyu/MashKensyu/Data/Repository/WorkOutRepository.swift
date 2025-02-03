@@ -50,20 +50,23 @@ class WorkOutRepository {
     }
     
     func addWorkout(categoryId: String, workout: Workout) {
+        
+        guard let category = realm.object(ofType: WorkoutCategory.self, forPrimaryKey: categoryId) else {
+            print("Error: Category not found for ID \(categoryId)")
+            return
+        }
+        
+        workout.categoryId = category
+
         do {
-            if let category = realm.object(ofType: WorkoutCategory.self, forPrimaryKey: categoryId) {
-                workout.categoryId = category
-            } else {
-                print("Error: Category not found for ID \(categoryId)")
-                return
-            }
-            
             try realm.write {
                 realm.add(workout)
-                print("Workout added: \(workout.name)")
             }
         } catch {
             print("Error saving workout: \(error)")
+            
         }
+        
     }
-}
+    
+}// end of class

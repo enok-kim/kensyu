@@ -9,7 +9,7 @@ import UIKit
 
 class AddWorkViewController: UIViewController {
     
-    var categoryId: String?
+    var categoryId: String!
     private let workoutRepository = WorkOutRepository()
     
     // MARK: Outlets
@@ -21,7 +21,7 @@ class AddWorkViewController: UIViewController {
         super.viewDidLoad()
     }
     
-    @IBAction func addWorkout(_ sender: UIButton) {
+    @IBAction func onTapAddButton(_ sender: UIButton) {
         guard let name = workoutName.text, !name.isEmpty,
               let description = workoutDescription.text, !description.isEmpty,
               let level = workoutLevel.text, !level.isEmpty else {
@@ -31,25 +31,22 @@ class AddWorkViewController: UIViewController {
         let newWorkout = Workout()
         newWorkout.name = name
         newWorkout.workoutDescription = description
-        newWorkout.difficulty = level
-        
-        if let categoryId {
-            workoutRepository.addWorkout(categoryId: categoryId, workout: newWorkout)
-            self.navigationController?.popViewController(animated: true)
-        } else {
-            print("Error: categoryId is nil")
-        }
+        newWorkout.level = level
+
+        workoutRepository.addWorkout(categoryId: categoryId, workout: newWorkout)
+        self.navigationController?.popViewController(animated: true)
+
     }
     
-    @IBAction func onReset(_ sender: UIButton) {
+    @IBAction func onTapResetButton(_ sender: UIButton) {
         workoutName.text = ""
         workoutDescription.text = ""
         workoutLevel.text = ""
     }
     
     static func instantiate(categoryId: String) -> AddWorkViewController {
-        let storyboard = UIStoryboard(name: "AddWork", bundle: nil)
-        let vc = storyboard.instantiateViewController(identifier: "AddWorkVC") as! AddWorkViewController
+        let storyboard = UIStoryboard(name: "AddWorkout", bundle: nil)
+        let vc = storyboard.instantiateViewController(identifier: "AddWorkoutVC") as! AddWorkViewController
         vc.categoryId = categoryId
         return vc
     }
