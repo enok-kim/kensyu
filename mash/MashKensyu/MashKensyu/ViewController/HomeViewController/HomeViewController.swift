@@ -31,7 +31,7 @@ class HomeViewController: UIViewController {
         let planHistoryVC = PlanHistoryViewController.instantiate()
         navigationController?.pushViewController(planHistoryVC, animated: true)
     }
-    @IBAction func onImageButtonTap1(_ sender: UIButton) {
+    @IBAction func onGoogleButton(_ sender: UIButton) {
         let webVC = WebViewController.instantiate(urlString: "http://www.google.com")
         navigationController?.pushViewController(webVC, animated: true)
         }
