@@ -29,7 +29,7 @@ class WorkOutListViewController: UIViewController, UITableViewDataSource, UITabl
             return
         }
         
-        if let workouts = workOutListRepository.fetchWorkouts(categoryId: categoryId) {
+        if let workouts = workOutListRepository.fetchWorkout(categoryId: categoryId) {
             workOutList = workouts
             print("Fetched \(workOutList.count) workouts")
             workoutListTable.reloadData()

@@ -14,7 +14,7 @@ class Workout: Object {
     
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
     @Persisted var name: String
-    @Persisted var difficulty: String
+    @Persisted var level: String
     @Persisted var workoutDescription: String = ""
     // 所属しているカテゴリー!
     @Persisted var categoryId: WorkoutCategory?
@@ -23,11 +23,11 @@ class Workout: Object {
         super.init()
     }
     
-    convenience init(name: String, workoutDescription: String, difficulty: String) {
+    convenience init(name: String, level: String, difficulty: String) {
         self.init()
         self.name = name
         self.workoutDescription = workoutDescription
-        self.difficulty = difficulty
+        self.level = level
     }
     
 }
