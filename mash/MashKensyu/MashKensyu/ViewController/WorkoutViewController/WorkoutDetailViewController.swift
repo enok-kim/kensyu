@@ -9,7 +9,6 @@ import UIKit
 
 class WorkoutDetailViewController: UIViewController {
     
-    var categoryId: String!
     var workoutId: String!
     var workout: Workout?
     let repository = WorkOutRepository()
@@ -25,7 +24,8 @@ class WorkoutDetailViewController: UIViewController {
     }
     
     private func initialize() {
-        guard let workout = repository.fetchWorkout(categoryId: categoryId, workoutId: workoutId)?.first else {
+        
+        guard let workout = repository.fetchWorkoutById(workoutId: workoutId) else {
             return
         }
 
@@ -34,15 +34,17 @@ class WorkoutDetailViewController: UIViewController {
         workoutName.text = workout.name
         workoutDescription.text = workout.workoutDescription
         workoutLevel.text = workout.level
+        
     }
     
 
     // MARK: 画面遷移関連メソッド
-    static func instantiate(categoryId: String, workoutId: String) -> WorkoutDetailViewController {
+    static func instantiate(workoutId: String) -> WorkoutDetailViewController {
+        
         let storyboard = UIStoryboard(name: "WorkoutDetail", bundle: nil)
         let vc = storyboard.instantiateViewController(withIdentifier: "WorkoutDetailVC") as! WorkoutDetailViewController
-        vc.categoryId = categoryId
         vc.workoutId = workoutId
         return vc
+        
     }
 }

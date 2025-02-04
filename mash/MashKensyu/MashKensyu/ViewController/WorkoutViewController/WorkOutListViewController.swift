@@ -29,7 +29,7 @@ class WorkOutListViewController: UIViewController, UITableViewDataSource, UITabl
             return
         }
         
-        if let workouts = workOutListRepository.fetchWorkout(categoryId: categoryId) {
+        if let workouts = workOutListRepository.fetchWorkoutsById(categoryId: categoryId) {
             workOutList = workouts
             print("Fetched \(workOutList.count) workouts")
             workoutListTable.reloadData()
@@ -53,7 +53,7 @@ class WorkOutListViewController: UIViewController, UITableViewDataSource, UITabl
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedWorkout = workOutList[indexPath.row]
         
-        let detailVC = WorkoutDetailViewController.instantiate(categoryId: categoryId, workoutId: selectedWorkout.id)
+        let detailVC = WorkoutDetailViewController.instantiate(workoutId: selectedWorkout.id)
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
