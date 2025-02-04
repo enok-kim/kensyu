@@ -21,25 +21,21 @@ class WorkoutDetailViewController: UIViewController {
     // MARK: Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchWorkoutDetails()
+        initialize()
     }
     
-    private func fetchWorkoutDetails() {
-        workout = repository.fetchWorkoutDetails(categoryId: categoryId, workoutId: workoutId)
-        
-        if let workout = workout {
-            updateUI(with: workout)
-        } else {
-            print("⚠️ 詳細情報が見つかりません。")
+    private func initialize() {
+        guard let workout = repository.fetchWorkout(categoryId: categoryId, workoutId: workoutId)?.first else {
+            return
         }
-    }
-    
-    private func updateUI(with workout: Workout) {
+
         self.title = workout.name
+
         workoutName.text = workout.name
         workoutDescription.text = workout.workoutDescription
         workoutLevel.text = workout.level
     }
+    
 
     // MARK: 画面遷移関連メソッド
     static func instantiate(categoryId: String, workoutId: String) -> WorkoutDetailViewController {

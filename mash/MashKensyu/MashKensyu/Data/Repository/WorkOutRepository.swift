@@ -39,14 +39,19 @@ class WorkOutRepository {
         }
     }
     
-    func fetchWorkouts(categoryId: String?) -> [Workout]? {
+    func fetchWorkout(categoryId: String?, workoutId: String? = nil) -> [Workout]? {
         guard let categoryId = categoryId else {
             print("⚠️ categoryIdはnilです。")
             return nil
         }
         
-        let result = realm.objects(Workout.self).filter("categoryId.id == %@", categoryId)
-        return Array(result)
+        var query = realm.objects(Workout.self).filter("categoryId.id == %@", categoryId)
+        
+        if let workoutId = workoutId {
+            query = query.filter("id == %@", workoutId)
+        }
+        
+        return Array(query)
     }
     
     func addWorkout(categoryId: String, workout: Workout) {
@@ -69,15 +74,6 @@ class WorkOutRepository {
         
     }
     
-    func fetchWorkoutDetails(categoryId: String?, workoutId: String?) -> Workout? {
-        guard let categoryId = categoryId, let workoutId = workoutId else {
-            print("⚠️ categoryId  workoutId가 nil입니다.")
-            return nil
-        }
-        
-        let result = realm.objects(Workout.self)
-            .filter("categoryId.id == %@ AND id == %@", categoryId, workoutId)
-        
-        return result.first
-    }
+    
+    
 }// end of class
