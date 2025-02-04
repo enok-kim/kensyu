@@ -59,7 +59,7 @@ class WorkOutListViewController: UIViewController, UITableViewDataSource, UITabl
     
     // MARK: - Screen Transition Method
     static func instantiate(categoryId: String) -> WorkOutListViewController {
-        let storyboard = UIStoryboard(name: "WorkOutList", bundle: nil)
+        let storyboard = UIStoryboard(name: "WorkoutList", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "WorkOutListVC") as! WorkOutListViewController
         vc.categoryId = categoryId
         return vc

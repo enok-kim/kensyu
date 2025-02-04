@@ -23,7 +23,7 @@ class Workout: Object {
         super.init()
     }
     
-    convenience init(name: String, level: String, difficulty: String) {
+    convenience init(name: String, workoutDescription: String, level: String) {
         self.init()
         self.name = name
         self.workoutDescription = workoutDescription
