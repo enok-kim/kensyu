@@ -29,7 +29,7 @@ class WorkOutListViewController: UIViewController, UITableViewDataSource, UITabl
             return
         }
         
-        if let workouts = workOutListRepository.fetchWorkouts(categoryId: categoryId) {
+        if let workouts = workOutListRepository.fetchWorkoutsBy(categoryId: categoryId) {
             workOutList = workouts
             print("Fetched \(workOutList.count) workouts")
             workoutListTable.reloadData()
@@ -51,12 +51,15 @@ class WorkOutListViewController: UIViewController, UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(workOutList[indexPath.row])
+        let selectedWorkout = workOutList[indexPath.row]
+        
+        let detailVC = WorkoutDetailViewController.instantiate(workoutId: selectedWorkout.id)
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
     
     // MARK: - Screen Transition Method
     static func instantiate(categoryId: String) -> WorkOutListViewController {
-        let storyboard = UIStoryboard(name: "WorkOutList", bundle: nil)
+        let storyboard = UIStoryboard(name: "WorkoutList", bundle: nil)
         let vc = storyboard.instantiateViewController(identifier: "WorkOutListVC") as! WorkOutListViewController
         vc.categoryId = categoryId
         return vc
