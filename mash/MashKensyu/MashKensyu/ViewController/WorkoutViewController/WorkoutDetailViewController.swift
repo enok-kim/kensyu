@@ -25,7 +25,7 @@ class WorkoutDetailViewController: UIViewController {
     
     private func initialize() {
         
-        guard let workout = repository.fetchWorkoutById(workoutId: workoutId) else {
+        guard let workout = repository.fetchWorkoutBy(id: workoutId) else {
             return
         }
 

@@ -59,7 +59,7 @@ class WorkOutRepository {
         
     }
     
-    func fetchWorkoutsById(categoryId: String?) -> [Workout]? {
+    func fetchWorkoutsBy(categoryId: String?) -> [Workout]? {
         
         guard let categoryId = categoryId else {
             print("⚠️ categoryIdはnilです。")
@@ -72,9 +72,9 @@ class WorkOutRepository {
         
     }
     
-    func fetchWorkoutById(workoutId: String?) -> Workout? {
+    func fetchWorkoutBy(id: String?) -> Workout? {
         
-        guard let workoutId = workoutId else {
+        guard let workoutId = id else {
             print("⚠️ workoutIdは nilです.")
             return nil
         }
