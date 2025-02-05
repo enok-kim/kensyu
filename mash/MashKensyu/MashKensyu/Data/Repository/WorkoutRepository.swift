@@ -83,6 +83,12 @@ class WorkOutRepository {
         return result.first
         
     }
-
+    
+    func fetchWorkouts(for category: WorkoutCategory) -> [Workout] {
+        
+        let workouts = category.workouts
+        return Array(workouts)
+        
+    }
     
 }// end of class
