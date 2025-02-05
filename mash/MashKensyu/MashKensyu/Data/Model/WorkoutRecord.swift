@@ -11,7 +11,7 @@ import RealmSwift
 class WorkoutRecord: Object {
     
     @Persisted(primaryKey: true) var id: String = UUID().uuidString
-    @Persisted var workoutPlanId: WorkoutPlan
+    @Persisted var workoutPlanId: WorkoutPlan?
     @Persisted var date: Date
     @Persisted var completedSets: Int
     @Persisted var completedReps: Int?
@@ -22,7 +22,7 @@ class WorkoutRecord: Object {
         super.init()
     }
     
-    convenience init(id: String, workoutPlanId: WorkoutPlan, date: Date, completedSets: Int, completedReps: Int? = nil, completedDuration: Int? = nil, completedWeight: Double? = nil) {
+    convenience init(id: String, workoutPlanId: WorkoutPlan?, date: Date, completedSets: Int, completedReps: Int? = nil, completedDuration: Int? = nil, completedWeight: Double? = nil) {
         
         self.init()
         self.id = id
