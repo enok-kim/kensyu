@@ -11,17 +11,20 @@ import WebKit
 class WebViewController: UIViewController {
     
     @IBOutlet weak var webView: WKWebView!
-    var urlString: String?
-
+    private var urlString: String?
+    
+    // MARK: Life Cycle
     override func viewDidLoad() {
         
         super.viewDidLoad()
-
-        if let urlString = urlString, let url = URL(string: urlString) {
-            let request = URLRequest(url: url)
-            webView.load(request)
-        }
+        loadURL()
         
+    }
+    
+    private func loadURL() {
+        guard let urlString = urlString, let url = URL(string: urlString) else { return }
+        let request = URLRequest(url: url)
+        webView.load(request)
     }
     
     static func instantiate(urlString: String?) -> WebViewController {
