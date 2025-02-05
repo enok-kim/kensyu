@@ -15,7 +15,6 @@ class PlanHistoryViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
     // MARK: - Screen Transition Method
     static func instantiate() -> PlanHistoryViewController {
         let storyboard = UIStoryboard(name: "PlanHistory", bundle: nil)
