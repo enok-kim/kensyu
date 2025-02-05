@@ -10,8 +10,8 @@ import UIKit
 class WorkoutDetailViewController: UIViewController {
     
     var workoutId: String!
-    var workout: Workout?
-    let repository = WorkOutRepository()
+    private var workout: Workout?
+    private let repository = WorkOutRepository()
     
     @IBOutlet weak var workoutName: UILabel!
     @IBOutlet weak var workoutDescription: UILabel!
