@@ -4,7 +4,7 @@ protocol ChoseWorkoutDelegate: AnyObject {
     func didSelectWorkout(workout: String)
 }
 
-class ChoseWorkoutViewController: UIViewController {
+class ChooseWorkoutViewController: UIViewController {
     
     @IBOutlet weak var categoryCollectionView: UICollectionView!
     @IBOutlet weak var workoutTableView: UITableView!
@@ -22,16 +22,14 @@ class ChoseWorkoutViewController: UIViewController {
         
         super.viewDidLoad()
         
-        categoryCollectionView.delegate = self
-        categoryCollectionView.dataSource = self
-        
-        workoutTableView.delegate = self
-        workoutTableView.dataSource = self
+        setupCategotyCollectionView()
+        setupChooseWorkoutTableView()
         
         loadCategories()
         
     }
     
+    // MARK: データ処理関連関数
     func loadCategories() {
         categories = repository.fetchCategories()
         
@@ -46,16 +44,17 @@ class ChoseWorkoutViewController: UIViewController {
         workoutTableView.reloadData()
     }
     
-    static func instantiate() -> ChoseWorkoutViewController {
-        let storyboard = UIStoryboard(name: "ChoseWorkout", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "ChoseWorkoutVC") as! ChoseWorkoutViewController
+    // MARK: 画面遷移関数
+    static func instantiate() -> ChooseWorkoutViewController {
+        let storyboard = UIStoryboard(name: "ChooseWorkout", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ChooseWorkoutVC") as! ChooseWorkoutViewController
         return vc
     }
     
 }
 
-//MARK: CollectionView
-extension ChoseWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
+    // MARK: CollectionView
+extension ChooseWorkoutViewController: UICollectionViewDelegate, UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return categories.count
@@ -65,31 +64,41 @@ extension ChoseWorkoutViewController: UICollectionViewDelegate, UICollectionView
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "CategoryCell", for: indexPath) as! CategoryCell
         let category = categories[indexPath.item]
-        if let categoryLabel = cell.categoryLabel {
-            categoryLabel.text = category.name
+        
+        guard let categoryName = category.name else {
+            return cell
         }
         
+        cell.configure(category: categoryName)
         return cell
+
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
         selectedCategory = categories[indexPath.item]
         loadWorkoutsForCategory(selectedCategory!)
     }
-}
+    
+    func setupCategotyCollectionView() {
+        categoryCollectionView.delegate = self
+        categoryCollectionView.dataSource = self
+    }
+    
+}// end of Cell
 
-//MARK: TableView
-extension ChoseWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
+    // MARK: TableView
+extension ChooseWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workouts.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutCell", for: indexPath)
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutListCell", for: indexPath) as! WorkoutListCell
         let workout = workouts[indexPath.row]
-        cell.textLabel?.text = workout.name
+        cell.configure(workoutName: workout.name)
+        
         return cell
     }
     
@@ -98,4 +107,10 @@ extension ChoseWorkoutViewController: UITableViewDelegate, UITableViewDataSource
         delegate?.didSelectWorkout(workout: selectedWorkout.name)
         navigationController?.popViewController(animated: true)
     }
+    
+    func setupChooseWorkoutTableView() {
+        workoutTableView.delegate = self
+        workoutTableView.dataSource = self
+    }
+    
 }
