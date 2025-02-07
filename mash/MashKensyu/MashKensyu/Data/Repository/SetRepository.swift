@@ -14,10 +14,8 @@ class SetRepository {
         }
     }
     
-    // WorkoutRecord를 저장하는 메서드
       func saveWorkoutRecord(date: Date, completedSets: Int, completedReps: Int? = nil, completedDuration: Int? = nil, completedWeight: Double? = nil) {
           
-          // WorkoutRecord 객체 생성
           let workoutRecord = WorkoutRecord(
               id: UUID().uuidString,
               date: date,
@@ -27,18 +25,16 @@ class SetRepository {
               completedWeight: completedWeight
           )
           
-          // Realm에 저장
           do {
               try realm.write {
                   realm.add(workoutRecord)
               }
-              print("✅ WorkoutRecord 저장 성공!")
+              print("✅ WorkoutRecord 保存成功!")
           } catch {
-              print("❌ WorkoutRecord 저장 실패: \(error.localizedDescription)")
+              print("❌ WorkoutRecord 保存失敗: \(error.localizedDescription)")
           }
       }
       
-      // 날짜별로 모든 WorkoutRecord를 불러오는 메서드
       func fetchWorkoutRecordsByDate(date: Date) -> [WorkoutRecord] {
           let startOfDay = Calendar.current.startOfDay(for: date)
           let endOfDay = Calendar.current.date(bySettingHour: 23, minute: 59, second: 59, of: startOfDay)!
@@ -50,11 +46,11 @@ class SetRepository {
      func saveWorkoutRecords(records: [WorkoutRecord]) {
          do {
              try realm.write {
-                 realm.add(records)  // WorkoutRecord들을 Realm에 저장
+                 realm.add(records)
              }
-             print("✅ WorkoutRecord 저장 완료")
+             print("✅ WorkoutRecord 保存成功")
         } catch {
-            print("❌ WorkoutRecord 저장 실패: \(error.localizedDescription)")
+            print("❌ WorkoutRecord 保存失敗: \(error.localizedDescription)")
         }
     }
     
