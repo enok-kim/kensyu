@@ -9,9 +9,9 @@ class RealmManager {
     private init() {
         
         let config = Realm.Configuration(
-            schemaVersion: 7,
+            schemaVersion: 8,
             migrationBlock: { migration, oldSchemaVersion in
-                if oldSchemaVersion < 7 {
+                if oldSchemaVersion < 8 {
                     
                     migrateObjectIdToString(migration: migration, ofType: Workout.className())
                     migrateObjectIdToString(migration: migration, ofType: WorkoutCategory.className())

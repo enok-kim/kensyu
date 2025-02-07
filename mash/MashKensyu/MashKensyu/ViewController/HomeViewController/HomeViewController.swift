@@ -16,7 +16,7 @@ class HomeViewController: UIViewController {
     }
     
     @IBAction func onTapPlanButton(_ sender: UIButton) {
-        let planVC = PlanViewController.instantiate()
+        let planVC = ChooseWorkoutViewController.instantiate()
         navigationController?.pushViewController(planVC, animated: true)
     }
     
