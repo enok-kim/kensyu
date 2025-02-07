@@ -1,3 +1,4 @@
+
 import UIKit
 
 protocol ChoseWorkoutDelegate: AnyObject {
@@ -71,7 +72,7 @@ extension ChooseWorkoutViewController: UICollectionViewDelegate, UICollectionVie
         
         cell.configure(category: categoryName)
         return cell
-
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
@@ -84,7 +85,7 @@ extension ChooseWorkoutViewController: UICollectionViewDelegate, UICollectionVie
         categoryCollectionView.dataSource = self
     }
     
-}// end of Cell
+} // end of Cell
 
     // MARK: TableView
 extension ChooseWorkoutViewController: UITableViewDelegate, UITableViewDataSource {

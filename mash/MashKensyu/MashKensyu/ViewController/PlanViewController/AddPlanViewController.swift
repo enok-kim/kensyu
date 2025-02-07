@@ -1,3 +1,4 @@
+
 import UIKit
 
 class AddPlanViewController: UIViewController {
@@ -16,6 +17,7 @@ class AddPlanViewController: UIViewController {
     // MARK: - 動作関連メソッド
     @IBAction func onTabChoseWorkout(_ sender: UIButton) {
         let choseWorkoutVC = ChooseWorkoutViewController.instantiate()
+        choseWorkoutVC.delegate = self
         self.navigationController?.pushViewController(choseWorkoutVC, animated: true)
     }
     
@@ -25,7 +27,7 @@ class AddPlanViewController: UIViewController {
         return vc
     }
     
-}// end of class
+} // end of class
 
     // MARK: Table
 extension AddPlanViewController: UITableViewDelegate, UITableViewDataSource {
@@ -47,7 +49,7 @@ extension AddPlanViewController: UITableViewDelegate, UITableViewDataSource {
         return 10
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
 
@@ -57,14 +59,21 @@ extension AddPlanViewController: UITableViewDelegate, UITableViewDataSource {
 }
 
    // MARK: Cell
-extension AddPlanViewController: AddSetCellDelegate {
-   
+extension AddPlanViewController: AddSetCellDelegate, ChoseWorkoutDelegate {
+    
+    func didSelectWorkout(workout: String) {
+        workouts.append([workout])
+        tableView.reloadData()
+    }
+
     private func configureCell(for indexPath: IndexPath) -> UITableViewCell {
+        
         let addSetButtonRow = addSetButtonRow(for: indexPath.section)
 
         if indexPath.row == workoutNameRow {
             let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutNameCell", for: indexPath) as! WorkoutCell
-            cell.configure(wourkoutName: "運動名 \(indexPath.section + 1)")
+            let workoutName = workouts[indexPath.section].first ?? "運動名"
+            cell.configure(wourkoutName: workoutName)
             return cell
         } else if indexPath.row == addSetButtonRow {
             let cell = tableView.dequeueReusableCell(withIdentifier: "AddSetCell", for: indexPath) as! AddSetCell
@@ -72,15 +81,17 @@ extension AddPlanViewController: AddSetCellDelegate {
             return cell
         } else {
             let cell = tableView.dequeueReusableCell(withIdentifier: "SetCell", for: indexPath) as! SetCell
-            let setText = "セット \(indexPath.row - 1): 50kg x 10回"
+            let setText = "セット \(indexPath.row - 1): "
             cell.configure(setText: setText)
             return cell
         }
+        
     }
     
     private func addSetButtonRow(for section: Int) -> Int {
         return workouts[section].count + 1
     }
+
     
     func onTapAddSetCell(section: Int, row: Int) {
         workouts[section].append("新しいセット")
