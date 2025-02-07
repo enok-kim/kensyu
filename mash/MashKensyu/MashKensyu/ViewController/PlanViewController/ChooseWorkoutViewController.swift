@@ -87,31 +87,41 @@ extension ChooseWorkoutViewController: UICollectionViewDelegate, UICollectionVie
     
 } // end of Cell
 
-    // MARK: TableView
+// MARK: TableView
 extension ChooseWorkoutViewController: UITableViewDelegate, UITableViewDataSource {
-    
+
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return workouts.isEmpty ? 0 : 1
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return workouts.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        guard indexPath.row < workouts.count else {
+            fatalError("Invalid row index!")
+        }
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "WorkoutListCell", for: indexPath) as! WorkoutListCell
         let workout = workouts[indexPath.row]
         cell.configure(workoutName: workout.name)
-        
         return cell
     }
-    
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        guard indexPath.row >= 0 && indexPath.row < workouts.count else {
+            print("Invalid row")
+            return
+        }
+
         let selectedWorkout = workouts[indexPath.row]
         delegate?.didSelectWorkout(workout: selectedWorkout.name)
         navigationController?.popViewController(animated: true)
     }
-    
+
     func setupChooseWorkoutTableView() {
         workoutTableView.delegate = self
         workoutTableView.dataSource = self
     }
-    
 }
