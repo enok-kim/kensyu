@@ -1,9 +1,4 @@
-//
-//  AddSetCell.swift
-//  MashKensyu
-//
-//  Created by eversense on 2025/02/06.
-//
+
 
 protocol AddSetCellDelegate: AnyObject {
     func onTapAddSetCell(section: Int, row: Int)
